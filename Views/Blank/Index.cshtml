@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Blank>
+@{
+    ViewData["Title"] = "Blank";
+}
+<h1>View Question</h1>
+<a asp-action="Create" asp-controller="Blank">
+    <h3>Create a Question</h3>
+</a>
+<table class="table table-bordered table-stripped">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Synonym1</th>
+            <th>Synonym2</th>
+            <th>Synonym3</th>
+            <th>Subject</th>
+            <th>Difficulty</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Blank in Model)
+        {
+            <tr>
+                <td> @Html.Raw(@Blank.Statement)</td>
+                <td>@Blank.Answer</td>
+                <td>@Blank.Synonym1</td>
+                <td>@Blank.Synonym2</td>
+                <td>@Blank.Synonym3</td>
+                <td>@Blank.Subject</td>
+                <td>@Blank.Difficulty</td>
+            </tr>
+        }
+    </tbody>
+</table>

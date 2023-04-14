@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Question>
+@{
+    ViewData["Title"] = "Add Question";
+
+ }
+ <h1>View Question</h1>
+ <a asp-action="Create" asp-controller="Question" > 
+    <h3>Create a Question</h3>
+ </a>
+ <table class="table table-bordered table-stripped">
+     <thead>
+         <tr>
+             <th>Question</th>
+             <th>Answer</th>
+            <th>Option1</th>
+            <th>Option2</th>
+            <th>Option3</th>
+            <th>Subject</th>
+            <th>Difficulty</th>
+            <th>Actions</th>
+         </tr>
+     </thead>
+     <tbody>
+
+        @foreach (var question in Model)
+        {
+           <tr><td>@Html.Raw(@question.Content)</td>
+                <td>@Html.Raw(@question.Answer)</td>
+                <td> @Html.Raw(@question.Option1) </td>
+                <td>@Html.Raw(@question.Option2) </td>
+
+           
+                <td>@Html.Raw(@question.Option3)</td>
+                <td>@question.Subject </td>
+                <td>@question.Difficulty</td>
+                <td> <div>
+                        <a class="btn btn-info" asp-route-id="@question.Id" asp-controller="Question" asp-action="EditMCQ">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Question" asp-action="DeleteMCQ" asp-route-id="@question.Id">Delete</a>
+                </div></td>
+            </tr>
+}
+     </tbody>
+ </table>
